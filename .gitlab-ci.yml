@@ -1,0 +1,124 @@
+stages:
+  - npm_build   # 镜像构建和打包推送阶段
+  - npm_publish   # 应用部署uat
+  - npm_fresh_CDN
+
+variables:
+  KUBECONFIG: /etc/deploy/config  # 定义全局变量KUBECONFIG
+  project: help-srm
+  static_root: docs/.vuepress/dist
+  dev_dir: /nfs/k8s-test/namespace/dev/incdn/$project
+  test_dir: /nfs/k8s-test/namespace/test/incdn/$project
+  online_dir: /nfs/k8s/namespaces/production/incdn/$project
+  domain: "https://$project.rccchina.com/"
+  tools: yarn
+  node_version: v14.17.0
+  #tools: npm
+
+npm_dev_build_job:  # job名称
+  stage: npm_build  # 关联的阶段名称
+  variables:
+    env: dev
+  tags:  # GitLab Runner的tag
+    - ecs
+  cache:
+    key: $project-$env
+    paths:
+      - node_modules/
+      - package-lock.json
+      - docs/.vuepress/dist
+  only: 
+    - /^dev.*$/
+    - /^allen*$/
+  script:
+    - nvm use $node_version
+    - node -v
+    - npm -v
+    - ls
+    - $tools install
+    - yarn docs:build
+
+
+
+npm_online_build_job:  # job名称
+  stage: npm_build  # 关联的阶段名称
+  variables:
+    env: online
+  tags:  # GitLab Runner的tag
+    - ecs
+  cache:
+    key: $project-$env
+    paths:
+      - node_modules/
+      - package-lock.json
+      - docs/.vuepress/dist
+  only: 
+    - master
+  script:
+    - nvm use $node_version
+    - node -v
+    - npm -v
+    - ls
+    - $tools install
+    - yarn docs:build
+
+
+npm_dev_publish_job:  # job名称
+  stage: npm_publish  # 关联的阶段名称
+  variables:
+    env: dev
+  tags:  # GitLab Runner的tag
+    - ecs
+  cache:
+    key: $project-$env
+    paths:
+      - node_modules/
+      - package-lock.json
+      - docs/.vuepress/dist
+  only: 
+    - /^dev.*$/
+    - /^allen*$/
+  script:
+    - rm -rvf $dev_dir
+    - cp -av $static_root $dev_dir
+#    - python3 /opt/ops/gitlab/send_im.py $GITLAB_USER_EMAIL $CI_PROJECT_NAME $CI_COMMIT_REF_NAME $CI_JOB_URL $CI_PIPELINE_ID
+
+
+
+npm_online_publish_job:  # job名称
+  stage: npm_publish  # 关联的阶段名称
+  variables:
+    env: online
+  tags:  # GitLab Runner的tag
+    - ecs
+  cache:
+    key: $project-$env
+    paths:
+      - node_modules/
+      - package-lock.json
+      - docs/.vuepress/dist
+  only: 
+    - master
+  script:
+    - rm -rvf $online_dir
+    - cp -av $static_root $online_dir
+  when: manual
+
+npm_online_fresh_cdn_job:
+  stage: npm_fresh_CDN # 关联的阶段名称
+  variables:
+    env: online
+  tags:  # GitLab Runner的tag
+    - ecs
+  cache:
+    key: $project-$env
+    paths:
+      - node_modules/
+      - package-lock.json
+      - docs/.vuepress/dist
+  only: 
+    - master
+  script:
+    - python3 /opt/ops/cdn/refresh_cdn.py $domain
+    - python3 /opt/ops/gitlab/send_im.py $GITLAB_USER_EMAIL $CI_PROJECT_NAME $CI_COMMIT_REF_NAME $CI_JOB_URL $CI_PIPELINE_ID $CI_COMMIT_MESSAGE
+  when: manual
