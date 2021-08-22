@@ -44,7 +44,7 @@ const groupConfig = {
 					collapsable: false, // 可选的, 默认值是 true,
 					sidebarDepth: 2,    // 可选的, 默认值是 1
 					children: [
-						'/tech/vue/vuepress/init', '/tech/vue/vuepress/config', '/tech/vue/vuepress/deploy'
+						'/tech/vue/vuepress/init', '/tech/vue/vuepress/config', '/tech/vue/vuepress/deploy', '/tech/vue/vuepress/expand'
 					]
 				},
 			]
