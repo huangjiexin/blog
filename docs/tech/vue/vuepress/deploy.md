@@ -1,10 +1,5 @@
 # 部署项目
-
-## 设置 gitpage
-使用免费 gitpage 时，项目必须为 public 权限，private 的项目需要付费使用gitpage；
-![设置](/gitpage.png)
-
-## 打包
+## 打包发布
 这里使用脚本来执行打包发布的操作
 ``` bash
 #!/usr/bin/env sh
@@ -26,10 +21,15 @@ git add -A
 git commit -m 'deploy'
 
 # 如果发布到 https://<USERNAME>.github.io
-git push -f git@github.com:huangjiexin/blog.git gh-pages
+git push -f git@github.com:huangjiexin/blog.git master:gh-pages
 
 cd -
 ```
 执行脚本
-` ./deploy.sh/ `
+` bash ./deploy.sh/ `
 
+## 设置 gitpage
+使用免费 gitpage 时，项目必须为 public 权限，private 的项目需要付费使用gitpage；
+![设置](/gitpage.png)
+
+`gh-pages` 就是打包文件的分支，用于 gitpages 访问。
