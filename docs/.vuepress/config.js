@@ -12,7 +12,7 @@ module.exports = {
   // 主题样式配置
   themeConfig: {
     logo: '/logo.png',  // 左上角logo
-    // lastUpdated: 'Last Updated', //最后更新时间，需要git的commit信息
+    lastUpdated: 'Last Updated', //最后更新时间，需要git的commit信息
     sidebarDepth: 2, // 将同时提取markdown中h2 和 h3 标题，显示在侧边栏上。
     displayAllHeaders: false, // 来显示所有页面的标题链接
     nav: [ // 导航栏配置
