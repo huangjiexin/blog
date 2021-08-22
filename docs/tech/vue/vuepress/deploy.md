@@ -1,3 +1,12 @@
+# 部署项目
+
+## 设置 gitpage
+使用免费 gitpage 时，项目必须为 public 权限，private 的项目需要付费使用gitpage；
+![设置](/gitpage.png)
+
+## 打包
+这里使用脚本来执行打包发布的操作
+``` bash
 #!/usr/bin/env sh
 
 # 确保脚本抛出遇到的错误
@@ -19,7 +28,8 @@ git commit -m 'deploy'
 # 如果发布到 https://<USERNAME>.github.io
 git push -f git@github.com:huangjiexin/blog.git gh-pages
 
-# 如果发布到 https://<USERNAME>.github.io/<REPO>
-# git push -f git@github.com:huangjiexin/devcenter.git master:gh-pages
-
 cd -
+```
+执行脚本
+` ./deploy.sh/ `
+

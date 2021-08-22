@@ -6,11 +6,11 @@ VuePress 需要 Node.js (opens new window)>= 8.6
 :::
 
 ## 搭建项目
-### 1.创建一个你喜欢的名字作为目录
+### 创建一个你喜欢的名字作为目录
 ``` bash
 mkdir blog && cd blog
 ```
-### 2.使用 `yarn` 初始化
+### 使用 `yarn` 初始化
 ``` bash
 # 全：--yes 跳过会话，直接通过默认值生成 package.json
 yarn init -y
@@ -28,18 +28,18 @@ yarn init -y
 }
 ```
 
-### 3.安装 `vuepress`
+### 安装 `vuepress`
 官方表示不推荐全局安装，于是
 ``` bash
 # --dev
 yarn add -D vuepress # npm install -D vuepress
 ```
-### 4.创建第一篇文档
+### 创建第一篇文档
 在根目录下创建 `docs` 文件夹，并且创建 内容为 `# Hello VuePress` 的 `README.md` 文件
 ``` bash
 mkdir docs && echo '# Hello VuePress' > docs/README.md
 ```
-### 5.启动服务器
+### 启动服务器
 ``` bash
 yarn docs:dev # npm run docs:dev
 ```
