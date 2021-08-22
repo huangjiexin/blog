@@ -1,4 +1,7 @@
 
 # 扩展
 ## 使用第三方主题
-推荐一个非常优秀的主题：[vuepress-theme-reco](http://vuepress-theme-reco.recoluan.com/)
+举个例子：[vuepress-theme-reco](http://vuepress-theme-reco.recoluan.com/)
+
+## 资源汇总
+[awesome-vuepress](https://github.com/vuepress/awesome-vuepress)

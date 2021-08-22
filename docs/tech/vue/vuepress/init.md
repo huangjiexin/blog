@@ -1,4 +1,8 @@
-
+---
+tags: 
+  - vue
+  - vuepress
+---
 # 初始化项目
 需要用到 `yarn` 或者 `npm` 进行安装，这里用 `yarn` 举例。
 ::: warning 官方提示
