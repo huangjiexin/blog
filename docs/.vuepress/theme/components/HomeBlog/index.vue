@@ -245,7 +245,7 @@ export default defineComponent({
   }
   #homeBlog {
     left: 0;
-    top: 45vh;
+    top: 42vh;
     width: 100%;
     position: absolute;
   }
@@ -261,12 +261,11 @@ export default defineComponent({
 
   @-webkit-keyframes float-in /*Safari and Chrome*/
   {
-    from { bottom: 100px; }
-    0%{bottom: 100px;}
-    // 25%{bottom: 125px;}
-    50%{bottom: 150px;}
-    // 75%{bottom: 125px;}
-    100%{bottom: 100px;}
+    0%{bottom: 80px;}
+    25%{bottom: 80px;}
+    50%{bottom: 125px;}
+    75%{bottom: 80px;}
+    100%{bottom: 80px;}
   }
 }
 
