@@ -3,7 +3,7 @@ const sidebarConfig = require('../../config/sidebarConfig.js')
 const blogConfig = require('../../config/blogConfig.js')
 
 module.exports = {
-  title: '林中小屋',
+  title: '林中小栈',
   description: '积硅步，至千里',
   head: [ // 注入到当前页面的 HTML <head> 中的标签
     ['link', { rel: 'icon', href: '/favicon.ico' }], // 增加一个自定义的 favicon(网页标签的图标)
