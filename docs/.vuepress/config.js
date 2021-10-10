@@ -6,7 +6,7 @@ module.exports = {
   title: '林中小栈',
   description: '积硅步，至千里',
   head: [ // 注入到当前页面的 HTML <head> 中的标签
-    ['link', { rel: 'icon', href: '/favicon.ico' }], // 增加一个自定义的 favicon(网页标签的图标)
+    ['link', { rel: 'icon', href: '/favicon.svg' }], // 增加一个自定义的 favicon(网页标签的图标)
     ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no' }]
   ],
   base: '/blog/',
@@ -21,7 +21,7 @@ module.exports = {
   themeConfig: {
     type: 'blog',
     blogConfig: blogConfig,
-    logo: '/logo.jpg',  // 左上角logo
+    logo: '/favicon.svg',  // 左上角logo
     lastUpdated: 'Last Updated', //最后更新时间，需要git的commit信息
     // author
     author: 'huangjiexin',
