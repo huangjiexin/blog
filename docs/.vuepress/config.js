@@ -35,12 +35,15 @@ module.exports = {
   },
   // 使用插件拓展
   plugins: [
-    ['vuepress-plugin-tags', {
-      type: 'default', // 标签预定义样式
-      color: '#42b983',  // 标签字体颜色
-      border: '1px solid #e2faef', // 标签边框颜色
-      backgroundColor: '#f0faf5', // 标签背景颜色
-      selector: '.page .content__default h1' // ^v1.0.1 你要将此标签渲染挂载到哪个元素后面？默认是第一个 H1 标签后面；可以提供 `document.querySelectorAll()` 支持的选择语法，将标签挂载该元素后面
-    }]
+    [
+      'vuepress-plugin-tags', 
+      {
+        type: 'default', // 标签预定义样式
+        color: '#42b983',  // 标签字体颜色
+        border: '1px solid #e2faef', // 标签边框颜色
+        backgroundColor: '#f0faf5', // 标签背景颜色
+        selector: '.page .content__default h1' // ^v1.0.1 你要将此标签渲染挂载到哪个元素后面？默认是第一个 H1 标签后面；可以提供 `document.querySelectorAll()` 支持的选择语法，将标签挂载该元素后面
+      }
+    ]
   ]
 };
